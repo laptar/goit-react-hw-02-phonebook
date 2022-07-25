@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Filter extends Component {
   state = {
@@ -25,3 +26,7 @@ export class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  onFilter: PropTypes.func,
+};
