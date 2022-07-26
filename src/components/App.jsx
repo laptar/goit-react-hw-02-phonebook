@@ -15,9 +15,11 @@ export class App extends Component {
       contacts: prevState.contacts.filter(({ id }) => id !== itemId),
     }));
   };
-  hendleFilterContacts = serchName => {
-    this.setState({ filter: serchName });
+
+  handleChangeInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
+
   hendleUpdateContacts = data => {
     if (
       this.state.contacts.find(
@@ -32,11 +34,6 @@ export class App extends Component {
     }
   };
 
-  // hendleFormSubmit = data => {
-  //   this.setState(prevState => ({
-  //     contacts: [data, ...prevState.contacts],
-  //   }));
-  // };
   render() {
     const { contacts, filter } = this.state;
     return (
@@ -44,7 +41,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.hendleUpdateContacts} />
         <h2>Contacts</h2>
-        <Filter onFilter={this.hendleFilterContacts} />
+        <Filter onChange={this.handleChangeInput} value={filter} />
         <ContactList
           list={contacts}
           serchName={filter}
