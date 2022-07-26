@@ -6,7 +6,7 @@ export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
-    id: '',
+    id: nanoid(),
   };
 
   handleChangeInput = e => {
